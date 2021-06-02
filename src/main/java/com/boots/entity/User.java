@@ -22,20 +22,21 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String username;
 
-//    @Pattern(regexp = "^(?=[a-zA-Z0-9]{3,16}$)(?=.*?[A-Za-z])(?=.*?[0-9]).*$",
-//            message = "Please use only latin symbols and numbers, min 1 number, min 1 symbol, \n" +
-//                    "from 3 to 16 symbols")
+    @Size(min=3, max = 16, message = "Please use from 3 to 16 symbols")
+    @Pattern(regexp = "^[a-zA-Z0-9]*$", message = "Please use only latin symbols and numbers")
+    @Pattern(regexp = ".*[a-zA-Z].*", message = "Please use min 1 latin symbol")
+    @Pattern(regexp = ".*\\d.*", message = "Please use min 1 number")
     private String password;
 
     @Transient
     private String passwordConfirm;
 
     @Size(min=1, max = 16, message = "Please use from 1 to 16 symbols")
-//    @Pattern(regexp = "^[a-zA-Z]+$", message = "Please use only latin symbols")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Please use only latin symbols")
     private String firstName;
 
     @Size(min=1, max = 16, message = "Please use from 1 to 16 symbols")
-//    @Pattern(regexp = "^[a-zA-Z]+$", message = "Please use only latin symbols")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Please use only latin symbols")
     private String lastName;
 
     private Date createdAt;
@@ -44,6 +45,7 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
     public User() {
+        createdAt = new Date(System.currentTimeMillis());
     }
 
     public Long getId() {
