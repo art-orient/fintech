@@ -22,7 +22,7 @@
                 <td>${user.id}</td>
                 <td>${user.username}</td>
                 <td>
-                    <form action="${pageContext.request.contextPath}/admin" method="post">
+                    <form action="${pageContext.request.contextPath}/user/${user.id}" method="post">
                         <input type="hidden" name="userId" value="${user.id}"/>
                         <input type="hidden" name="action" value="view"/>
                         <button type="submit">View</button>

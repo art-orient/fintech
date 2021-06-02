@@ -10,29 +10,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class ListController {
+public class ViewController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/user")
-    public String userList(Model model) {
-        model.addAttribute("allUsers", userService.allUsers());
-        return "list";
-    }
+//    @GetMapping("/admin")
+//    public String userList(Model model) {
+//        model.addAttribute("allUsers", userService.allUsers());
+//        return "admin";
+//    }
 
-    @PostMapping("/user")
-    public String viewUser(@RequestParam(required = true, defaultValue = "" ) Long userId,
+    @PostMapping("/user/{id}")
+    public String  viewUser(@RequestParam(required = true, defaultValue = "" ) Long userId,
                               @RequestParam(required = true, defaultValue = "" ) String action,
                               Model model) {
         if (action.equals("view")){
-            userService.findUserById(userId);
+            model.addAttribute("User", userService.findUserById(userId));
         }
         return "view";
     }
 
-    @GetMapping("/user/{userId}")
-    public String  getUser(@PathVariable("userId") Long userId, Model model) {
-        model.addAttribute("allUsers", userService.usergetList(userId));
-        return "view";
-    }
+//    @GetMapping("/admin/gt/{userId}")
+//    public String  gtUser(@PathVariable("userId") Long userId, Model model) {
+//        model.addAttribute("allUsers", userService.usergetList(userId));
+//        return "admin";
+//    }
 }
+

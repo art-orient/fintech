@@ -18,16 +18,16 @@
     <th>Password</th>
     <th>Roles</th>
     </thead>
-    <c:forEach items="${allUsers}" var="user">
+<%--    <c:forEach items="${viewUser}" var="user">--%>
       <tr>
-        <td>${user.id}</td>
-        <td>${user.username}</td>
-        <td>${user.password}</td>
+        <td>${User.id}</td>
+        <td>${User.username}</td>
+        <td>${User.password}</td>
         <td>
-          <c:forEach items="${user.roles}" var="role">${role.name}; </c:forEach>
+          <c:forEach items="${User.roles}" var="role">${role.name} </c:forEach>
         </td>
         <td>
-          <form action="${pageContext.request.contextPath}/admin" method="post">
+          <form action="${pageContext.request.contextPath}/view" method="post">
             <input type="hidden" name="userId" value="${user.id}"/>
             <input type="hidden" name="action" value="delete"/>
             <button type="submit">Delete</button>
@@ -36,9 +36,12 @@
         </td>
 
       </tr>
-    </c:forEach>
+<%--    </c:forEach>--%>
   </table>
-  <a href="/">Главная</a>
+  <h4><a href="/">Главная</a></h4>
+  <sec:authorize access="isAuthenticated()">
+    <h4><a href="/logout">Выйти</a></h4>
+  </sec:authorize>
 </div>
 </body>
 </html>
