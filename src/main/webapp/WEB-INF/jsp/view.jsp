@@ -18,7 +18,6 @@
     <th>Password</th>
     <th>Roles</th>
     </thead>
-<%--    <c:forEach items="${viewUser}" var="user">--%>
       <tr>
         <td>${User.id}</td>
         <td>${User.username}</td>
@@ -27,16 +26,13 @@
           <c:forEach items="${User.roles}" var="role">${role.name} </c:forEach>
         </td>
         <td>
-          <form action="${pageContext.request.contextPath}/view" method="post">
-            <input type="hidden" name="userId" value="${user.id}"/>
-            <input type="hidden" name="action" value="delete"/>
-            <button type="submit">Delete</button>
+          <form action="${pageContext.request.contextPath}/user/${User.id}/edit" method="get">
+            <input type="hidden" name="userId" value="${User.id}"/>
+            <input type="hidden" name="action" value="edit"/>
+            <button type="submit">Edit</button>
           </form>
-
         </td>
-
       </tr>
-<%--    </c:forEach>--%>
   </table>
   <h4><a href="/user/new">Создать нового пользователя</a></h4>
   <h4><a href="/">Главная</a></h4>

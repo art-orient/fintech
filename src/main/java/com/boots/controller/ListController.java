@@ -32,7 +32,7 @@ public class ListController {
 
     @GetMapping("/user/{userId}")
     public String  getUser(@PathVariable("userId") Long userId, Model model) {
-        model.addAttribute("allUsers", userService.usergetList(userId));
+        model.addAttribute("allUsers", userService.getUserList(userId));
         return "view";
     }
 }

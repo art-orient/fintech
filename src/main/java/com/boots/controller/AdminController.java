@@ -30,9 +30,9 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/admin/gt/{userId}")
-    public String  gtUser(@PathVariable("userId") Long userId, Model model) {
-        model.addAttribute("allUsers", userService.usergetList(userId));
-        return "admin";
-    }
+//    @GetMapping("/admin/gt/{userId}")
+//    public String  gtUser(@PathVariable("userId") Long userId, Model model) {
+//        model.addAttribute("allUsers", userService.usergetList(userId));
+//        return "admin";
+//    }
 }
