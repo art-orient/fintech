@@ -18,7 +18,7 @@
     <th>Roles</th>
     <th>FirstName</th>
     <th>LastName</th>
-<%--    <th>Status</th>--%>
+    <th>Status</th>
     <th>Created At</th>
     </thead>
     <c:forEach items="${allUsers}" var="user">
@@ -30,7 +30,7 @@
         </td>
         <td>${user.firstName}</td>
         <td>${user.lastName}</td>
-<%--        <td>${user.status}</td>--%>
+        <td>${user.status}</td>
         <td>${user.createdAt}</td>
         <td>
           <form action="${pageContext.request.contextPath}/admin" method="post">

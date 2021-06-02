@@ -22,8 +22,8 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String username;
 
-    @Size(min=3, max = 16, message = "Please use from 3 to 16 symbols")
-    @Pattern(regexp = "^[a-zA-Z0-9]*$", message = "Please use only latin symbols and numbers")
+//    @Size(min=3, max = 16, message = "Please use from 3 to 16 symbols")
+//    @Pattern(regexp = "^[a-zA-Z0-9]*$", message = "Please use only latin symbols and numbers")
     @Pattern(regexp = ".*[a-zA-Z].*", message = "Please use min 1 latin symbol")
     @Pattern(regexp = ".*\\d.*", message = "Please use min 1 number")
     private String password;
@@ -39,12 +39,16 @@ public class User implements UserDetails {
     @Pattern(regexp = "^[a-zA-Z]+$", message = "Please use only latin symbols")
     private String lastName;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     private Date createdAt;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     public User() {
+        status = Status.ACTIVE;
         createdAt = new Date(System.currentTimeMillis());
     }
 
@@ -137,5 +141,13 @@ public class User implements UserDetails {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
