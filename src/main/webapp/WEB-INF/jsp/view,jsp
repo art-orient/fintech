@@ -38,10 +38,7 @@
       </tr>
     </c:forEach>
   </table>
-  <h4><a href="/">Главная</a></h4>
-  <sec:authorize access="isAuthenticated()">
-    <h4><a href="/logout">Выйти</a></h4>
-  </sec:authorize>
+  <a href="/">Главная</a>
 </div>
 </body>
 </html>
