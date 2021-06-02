@@ -16,12 +16,16 @@
     <th>ID</th>
     <th>UserName</th>
     <th>Password</th>
+    <th>First name</th>
+    <th>Last name</th>
     <th>Roles</th>
     </thead>
       <tr>
         <td>${User.id}</td>
         <td>${User.username}</td>
         <td>${User.password}</td>
+        <td>${User.firstName}</td>
+        <td>${User.lastName}</td>
         <td>
           <c:forEach items="${User.roles}" var="role">${role.name} </c:forEach>
         </td>

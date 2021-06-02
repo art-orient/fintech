@@ -28,6 +28,12 @@
       <form:errors path="password"></form:errors>
         ${passwordError}
     </div>
+    <div>
+      <form:input type="firstName" path="firstName" placeholder="First name"></form:input>
+    </div>
+    <div>
+      <form:input type="lastName" path="lastName" placeholder="Last name"></form:input>
+    </div>
     <br><button type="submit">Зарегистрироваться</button><br><br>
   </form:form>
   <a href="/">Главная</a>

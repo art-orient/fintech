@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
@@ -14,12 +15,28 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Size(min=2, message = "Не меньше 5 знаков")
+
+    @Size(min=3, max = 16, message = "Please use from 3 to 16 symbols")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Please use only latin symbols")
+    @Column(unique = true)
     private String username;
-    @Size(min=2, message = "Не меньше 5 знаков")
+
+//    @Pattern(regexp = "^(?=[a-zA-Z0-9]{3,16}$)(?=.*?[A-Za-z])(?=.*?[0-9]).*$",
+//            message = "Please use only latin symbols and numbers, min 1 number, min 1 symbol, \n" +
+//                    "from 3 to 16 symbols")
     private String password;
+
     @Transient
     private String passwordConfirm;
+
+    @Size(min=1, max = 16, message = "Please use from 1 to 16 symbols")
+//    @Pattern(regexp = "^[a-zA-Z]+$", message = "Please use only latin symbols")
+    private String firstName;
+
+    @Size(min=1, max = 16, message = "Please use from 1 to 16 symbols")
+//    @Pattern(regexp = "^[a-zA-Z]+$", message = "Please use only latin symbols")
+    private String lastName;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
@@ -93,4 +110,19 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }

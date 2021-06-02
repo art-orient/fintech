@@ -15,17 +15,19 @@
     <thead>
     <th>ID</th>
     <th>UserName</th>
-    <th>Password</th>
     <th>Roles</th>
+    <th>FirstName</th>
+    <th>LastName</th>
     </thead>
     <c:forEach items="${allUsers}" var="user">
       <tr>
         <td>${user.id}</td>
         <td>${user.username}</td>
-        <td>${user.password}</td>
         <td>
           <c:forEach items="${user.roles}" var="role">${role.name}; </c:forEach>
         </td>
+        <td>${user.firstName}</td>
+        <td>${user.lastName}</td>
         <td>
           <form action="${pageContext.request.contextPath}/admin" method="post">
             <input type="hidden" name="userId" value="${user.id}"/>
