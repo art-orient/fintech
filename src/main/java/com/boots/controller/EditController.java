@@ -1,15 +1,13 @@
 package com.boots.controller;
 
+import com.boots.entity.Status;
 import com.boots.entity.User;
 import com.boots.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -27,8 +25,19 @@ public class EditController {
 
     @PostMapping("/user/{id}/edit")
     public String editUser(@ModelAttribute("editUser") @Valid User editUser,
-                @RequestParam(required = true, defaultValue = "" ) Long userId,
-                BindingResult bindingResult, Model model) {
+                    @RequestParam(required = true, defaultValue = "" ) String action,
+                    @RequestParam(required = true, defaultValue = "" ) Long userId,
+                    BindingResult bindingResult, Model model) {
+        User user = userService.findUserById(userId);
+        if (action.equals("lock")){
+            user.setStatus(Status.INACTIVE);
+            userService.updateUser(user);
+            return "redirect:/user/";
+        } else if (action.equals("unlock")){
+            user.setStatus(Status.ACTIVE);
+            userService.updateUser(user);
+            return "redirect:/user/";
+        }
         if (bindingResult.hasErrors()) {
             return "edit";
         }
@@ -36,6 +45,7 @@ public class EditController {
             model.addAttribute("passwordError", "Пароли не совпадают");
             return "edit";
         }
+        userService.updateUser(editUser);
         return "redirect:/";
     }
 }

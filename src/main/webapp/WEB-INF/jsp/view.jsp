@@ -40,6 +40,20 @@
             <button type="submit">Edit</button>
           </form>
         </td>
+        <td>
+          <form action="${pageContext.request.contextPath}/user/${User.id}/edit" method="post">
+            <input type="hidden" name="userId" value="${User.id}"/>
+            <input type="hidden" name="action" value="lock"/>
+            <button type="submit">Lock</button>
+          </form>
+        </td>
+        <td>
+          <form action="${pageContext.request.contextPath}/user/${User.id}/edit" method="post">
+            <input type="hidden" name="userId" value="${User.id}"/>
+            <input type="hidden" name="action" value="unlock"/>
+            <button type="submit">Unlock</button>
+          </form>
+        </td>
       </tr>
   </table>
   <h4><a href="/user/new">Создать нового пользователя</a></h4>
