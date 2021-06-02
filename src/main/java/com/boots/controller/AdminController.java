@@ -14,25 +14,25 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/list")
+    @GetMapping("/admin")
     public String userList(Model model) {
         model.addAttribute("allUsers", userService.allUsers());
-        return "list";
+        return "admin";
     }
 
-    @PostMapping("/list")
+    @PostMapping("/admin")
     public String  deleteUser(@RequestParam(required = true, defaultValue = "" ) Long userId,
                               @RequestParam(required = true, defaultValue = "" ) String action,
                               Model model) {
         if (action.equals("delete")){
             userService.deleteUser(userId);
         }
-        return "redirect:/list";
+        return "redirect:/admin";
     }
 
-    @GetMapping("/list/{userId}")
-    public String  getUser(@PathVariable("userId") Long userId, Model model) {
+    @GetMapping("/admin/gt/{userId}")
+    public String  gtUser(@PathVariable("userId") Long userId, Model model) {
         model.addAttribute("allUsers", userService.usergtList(userId));
-        return "list";
+        return "admin";
     }
 }
