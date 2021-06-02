@@ -38,6 +38,7 @@
       </tr>
 <%--    </c:forEach>--%>
   </table>
+  <h4><a href="/user/new">Создать нового пользователя</a></h4>
   <h4><a href="/">Главная</a></h4>
   <sec:authorize access="isAuthenticated()">
     <h4><a href="/logout">Выйти</a></h4>

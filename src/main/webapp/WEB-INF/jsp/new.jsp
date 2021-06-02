@@ -28,7 +28,7 @@
       <form:errors path="password"></form:errors>
         ${passwordError}
     </div>
-    <button type="submit">Зарегистрироваться</button>
+    <br><button type="submit">Зарегистрироваться</button><br><br>
   </form:form>
   <a href="/">Главная</a>
 </div>

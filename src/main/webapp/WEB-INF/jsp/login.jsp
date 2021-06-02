@@ -19,8 +19,8 @@
       <input name="username" type="text" placeholder="Username"
              autofocus="true"/><br><br>
       <input name="password" type="password" placeholder="Password"/><br><br>
-      <button type="submit">Войти</button>
-      <h4><a href="/registration">Зарегистрироваться</a></h4>
+      <button type="submit">Войти</button><br>
+      <h4><a href="/user/new">Зарегистрироваться</a></h4>
     </div>
   </form>
 </div>
