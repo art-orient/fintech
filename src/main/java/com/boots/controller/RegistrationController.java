@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 
 @Controller
 public class RegistrationController {
@@ -29,8 +30,25 @@ public class RegistrationController {
         if (bindingResult.hasErrors()) {
             return "new";
         }
-        if (!userForm.getPassword().equals(userForm.getPasswordConfirm())){
+        String password = userForm.getPassword();
+        if (!password.equals(userForm.getPasswordConfirm())){
             model.addAttribute("passwordError", "Пароли не совпадают");
+            return "new";
+        }
+        if (!password.matches("^[a-zA-Z0-9]*$")){
+            model.addAttribute("passwordError", "Please use only latin symbols and numbers");
+            return "new";
+        }
+        if (!password.matches(".*[a-zA-Z].*")){
+            model.addAttribute("passwordError", "Please use min 1 latin symbol");
+            return "new";
+        }
+        if (!password.matches(".*\\d.*")){
+            model.addAttribute("passwordError", "Please use min 1 number");
+            return "new";
+        }
+        if (password.length() < 3 || password.length() > 16){
+            model.addAttribute("passwordError", "Please use from 3 to 16 symbols");
             return "new";
         }
         if (!userService.saveUser(userForm)){

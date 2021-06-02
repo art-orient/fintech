@@ -22,10 +22,6 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String username;
 
-//    @Size(min=3, max = 16, message = "Please use from 3 to 16 symbols")
-//    @Pattern(regexp = "^[a-zA-Z0-9]*$", message = "Please use only latin symbols and numbers")
-    @Pattern(regexp = ".*[a-zA-Z].*", message = "Please use min 1 latin symbol")
-    @Pattern(regexp = ".*\\d.*", message = "Please use min 1 number")
     private String password;
 
     @Transient

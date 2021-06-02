@@ -31,7 +31,9 @@
             </tr>
         </c:forEach>
     </table><br>
+    <security:authorize access="hasRole('ADMIN')">
     <h4><a href="/user/new">Создать нового пользователя</a></h4>
+    </security:authorize>
     <h4><a href="/">Главная</a></h4>
     <sec:authorize access="isAuthenticated()">
         <h4><a href="/logout">Выйти</a></h4>

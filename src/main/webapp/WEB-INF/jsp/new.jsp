@@ -29,10 +29,10 @@
         ${passwordError}
     </div>
     <div>
-      <form:input type="firstName" path="firstName" placeholder="First name"></form:input>
+      <form:input type="text" path="firstName" placeholder="First name"></form:input>
     </div>
     <div>
-      <form:input type="lastName" path="lastName" placeholder="Last name"></form:input>
+      <form:input type="text" path="lastName" placeholder="Last name"></form:input>
     </div>
     <br><button type="submit">Зарегистрироваться</button><br><br>
   </form:form>

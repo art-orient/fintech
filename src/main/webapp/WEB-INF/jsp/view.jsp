@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!DOCTYPE html>
@@ -15,7 +17,6 @@
     <thead>
     <th>ID</th>
     <th>UserName</th>
-    <th>Password</th>
     <th>First name</th>
     <th>Last name</th>
     <th>Status</th>
@@ -25,7 +26,6 @@
       <tr>
         <td>${User.id}</td>
         <td>${User.username}</td>
-        <td>${User.password}</td>
         <td>${User.firstName}</td>
         <td>${User.lastName}</td>
         <td>${User.status}</td>
@@ -33,6 +33,7 @@
         <td>
           <c:forEach items="${User.roles}" var="role">${role.name} </c:forEach>
         </td>
+        <sec:authorize access="hasRole('ADMIN')">
         <td>
           <form action="${pageContext.request.contextPath}/user/${User.id}/edit" method="get">
             <input type="hidden" name="userId" value="${User.id}"/>
@@ -57,6 +58,7 @@
       </tr>
   </table>
   <h4><a href="/user/new">Создать нового пользователя</a></h4>
+  </sec:authorize>
   <h4><a href="/">Главная</a></h4>
   <sec:authorize access="isAuthenticated()">
     <h4><a href="/logout">Выйти</a></h4>

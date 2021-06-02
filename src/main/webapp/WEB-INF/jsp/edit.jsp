@@ -15,10 +15,6 @@
     <h2>Редактирование пользователя</h2>
     <div>
       Пользователь - ${editUser.username}
-<%--      <form:input type="text" path="username" placeholder="Username"--%>
-<%--                  autofocus="true"></form:input>--%>
-<%--      <form:errors path="username"></form:errors>--%>
-<%--        ${usernameError}--%>
     </div>
     <div>
       <form:input type="password" path="password" placeholder="New password"></form:input>
@@ -28,6 +24,20 @@
                   placeholder="Confirm new password"></form:input>
       <form:errors path="password"></form:errors>
         ${passwordError}
+    </div>
+    <div>
+      <form:input type="text" path="firstName" placeholder="First name"></form:input>
+    </div>
+    <div>
+      <form:input type="text" path="lastName" placeholder="Last name"></form:input>
+    </div>
+    <div>
+      <form action="status" method="post">
+      <select>
+        <option value="ACTIVE">ACTIVE</option>
+        <option value="INACTIVE">INACTIVE</option>
+      </select>
+      </form>
     </div>
     <br><button type="submit">Редактировать</button><br><br>
   </form:form>
