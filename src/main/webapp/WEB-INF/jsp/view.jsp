@@ -18,6 +18,7 @@
     <th>Password</th>
     <th>First name</th>
     <th>Last name</th>
+    <th>Created At</th>
     <th>Roles</th>
     </thead>
       <tr>
@@ -26,6 +27,7 @@
         <td>${User.password}</td>
         <td>${User.firstName}</td>
         <td>${User.lastName}</td>
+        <td>${User.createdAt}</td>
         <td>
           <c:forEach items="${User.roles}" var="role">${role.name} </c:forEach>
         </td>

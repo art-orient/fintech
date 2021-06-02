@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.sql.Date;
 import java.util.Collection;
 import java.util.Set;
 
@@ -36,6 +37,8 @@ public class User implements UserDetails {
     @Size(min=1, max = 16, message = "Please use from 1 to 16 symbols")
 //    @Pattern(regexp = "^[a-zA-Z]+$", message = "Please use only latin symbols")
     private String lastName;
+
+    private Date createdAt;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
@@ -124,5 +127,13 @@ public class User implements UserDetails {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }
