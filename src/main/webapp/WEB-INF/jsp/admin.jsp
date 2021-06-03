@@ -23,15 +23,15 @@
     </thead>
     <c:forEach items="${allUsers}" var="user">
       <tr>
-        <td>${user.id}</td>
-        <td>${user.username}</td>
+        <td><c:out value="${user.id}"/></td>
+        <td><c:out value="${user.username}"/></td>
         <td>
-          <c:forEach items="${user.roles}" var="role">${role.name}; </c:forEach>
+          <c:forEach items="${user.roles}" var="role"><c:out value="${role.name}"/> </c:forEach>
         </td>
-        <td>${user.firstName}</td>
-        <td>${user.lastName}</td>
-        <td>${user.status}</td>
-        <td>${user.createdAt}</td>
+        <td><c:out value="${user.firstName}"/></td>
+        <td><c:out value="${user.lastName}"/></td>
+        <td><c:out value="${user.status}"/></td>
+        <td><c:out value="${user.createdAt}"/></td>
         <td>
           <form action="${pageContext.request.contextPath}/admin" method="post">
             <input type="hidden" name="userId" value="${user.id}"/>

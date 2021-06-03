@@ -20,9 +20,9 @@
         </thead>
         <c:forEach items="${allUsers}" var="user">
             <tr>
-                <td>${user.id}</td>
-                <td>${user.username}</td>
-                <td>${user.status}</td>
+                <td><c:out value="${user.id}"/></td>
+                <td><c:out value="${user.username}"/></td>
+                <td><c:out value="${user.status}"/></td>
                 <td>
                     <form action="${pageContext.request.contextPath}/user/${user.id}" method="post">
                         <input type="hidden" name="userId" value="${user.id}"/>

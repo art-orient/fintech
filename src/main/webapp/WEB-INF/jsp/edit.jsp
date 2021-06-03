@@ -14,7 +14,7 @@
   <form:form method="POST" modelAttribute="editUser">
     <h2>Редактирование пользователя</h2>
     <div>
-      Пользователь - ${editUser.username}
+      Пользователь - <c:out value="${editUser.username}"/>
     </div>
     <div>
       <form:input type="password" path="password" placeholder="New password"></form:input>

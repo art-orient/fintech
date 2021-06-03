@@ -24,14 +24,14 @@
     <th>Roles</th>
     </thead>
       <tr>
-        <td>${User.id}</td>
-        <td>${User.username}</td>
-        <td>${User.firstName}</td>
-        <td>${User.lastName}</td>
-        <td>${User.status}</td>
-        <td>${User.createdAt}</td>
+        <td><c:out value="${User.id}"/></td>
+        <td><c:out value="${User.username}"/></td>
+        <td><c:out value="${User.firstName}"/></td>
+        <td><c:out value="${User.lastName}"/></td>
+        <td><c:out value="${User.status}"/></td>
+        <td><c:out value="${User.createdAt}"/></td>
         <td>
-          <c:forEach items="${User.roles}" var="role">${role.name} </c:forEach>
+          <c:forEach items="${User.roles}" var="role"><c:out value="${role.name}"/> </c:forEach>
         </td>
         <sec:authorize access="hasRole('ADMIN')">
         <td>
