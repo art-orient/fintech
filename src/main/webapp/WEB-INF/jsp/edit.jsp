@@ -26,17 +26,25 @@
         ${passwordError}
     </div>
     <div>
-      <form:input type="text" path="firstName" placeholder="First name"></form:input>
+      <form:input type="text" path="firstName" placeholder="firstName"></form:input>
     </div>
     <div>
-      <form:input type="text" path="lastName" placeholder="Last name"></form:input>
+      <form:input type="text" path="lastName" placeholder="lastName"></form:input>
     </div>
     <div>
-      <form action="status" method="post">
+      <form action="status">
       <select>
         <option value="ACTIVE">ACTIVE</option>
         <option value="INACTIVE">INACTIVE</option>
       </select>
+      </form>
+    </div>
+    <div>
+      <form action="role">
+        <select>
+          <option value="ROLE_USER;">USER</option>
+          <option value="ROLE_ADMIN;">ADMIN</option>
+        </select>
       </form>
     </div>
     <br><button type="submit">Редактировать</button><br><br>

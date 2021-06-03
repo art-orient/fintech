@@ -15,12 +15,14 @@
         <thead>
         <th>ID</th>
         <th>UserName</th>
+        <th>Status</th>
         <th>Action</th>
         </thead>
         <c:forEach items="${allUsers}" var="user">
             <tr>
                 <td>${user.id}</td>
                 <td>${user.username}</td>
+                <td>${user.status}</td>
                 <td>
                     <form action="${pageContext.request.contextPath}/user/${user.id}" method="post">
                         <input type="hidden" name="userId" value="${user.id}"/>

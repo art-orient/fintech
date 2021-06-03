@@ -38,6 +38,10 @@ public class EditController {
             userService.updateUser(user);
             return "redirect:/user/";
         }
+        if (action.equals("status") || action.equals("role")){
+            userService.updateUser(editUser);
+            return "redirect:/user/";
+        }
         if (bindingResult.hasErrors()) {
             return "edit";
         }
