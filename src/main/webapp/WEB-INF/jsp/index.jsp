@@ -17,7 +17,7 @@
     <h4><a href="/login">Войти</a></h4>
     <h4><a href="/user/new">Зарегистрироваться</a></h4>
   </sec:authorize>
-  <h4><a href="/user">Список пользователей</a></h4>
+  <h4><a href="/user" th:text="">Список пользователей</a></h4>
   <security:authorize access="hasRole('ADMIN')">
   <h4><a href="/admin">Удаление пользователей</a></h4>
   </security:authorize>
